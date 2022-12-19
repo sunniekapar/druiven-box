@@ -1,0 +1,50 @@
+@use '../abstracts' as a;
+
+.container {
+    @include a.flexCenter();
+    flex-direction: column;
+    gap: 5rem;
+    height: 100%;
+    h1 {
+        font-size: a.$title-font-size;
+    }
+}
+
+.difficulties { 
+    @include a.flexCenter();
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 80vw;
+}
+
+.difficulties__cards {
+   width: 300px;
+   height: 300px;   
+    button {
+        height: 100%;
+        width: 100%
+    }
+    button:hover {
+        cursor: pointer;
+        background: a.$accent-color;
+        box-shadow: 0 0 50px 0 a.$accent-color;
+    }
+}
+
+.cards__button {
+    @include a.flexCenter();
+    flex-direction: column;
+    gap: 2vh;
+    padding: 48px;
+    border: solid 4px rgba(a.$accent-color, 0.5);
+    background: a.$contrast-color;
+    border-radius: 36px;
+    transition: .25s;
+    h2 {
+        font-size: a.$header-font-size;
+    }
+    p {
+        font-size: a.$body-font-size;
+    }
+}

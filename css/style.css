@@ -1,0 +1,78 @@
+@font-face {
+  font-family: "SourceSans";
+  src: url("../fonts/sourcesans.ttf") format("truetype");
+}
+* {
+  font-family: "SourceSans";
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  color: #F5F5F5;
+}
+
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: #141414;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5rem;
+  height: 100%;
+}
+.container h1 {
+  font-size: 5rem;
+}
+
+.difficulties {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 80vw;
+}
+
+.difficulties__cards {
+  width: 300px;
+  height: 300px;
+}
+.difficulties__cards button {
+  height: 100%;
+  width: 100%;
+}
+.difficulties__cards button:hover {
+  cursor: pointer;
+  background: #0059B8;
+  box-shadow: 0 0 50px 0 #0059B8;
+}
+
+.cards__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2vh;
+  padding: 48px;
+  border: solid 4px rgba(0, 89, 184, 0.5);
+  background: #242424;
+  border-radius: 36px;
+  transition: 0.25s;
+}
+.cards__button h2 {
+  font-size: 3.5rem;
+}
+.cards__button p {
+  font-size: 1.25rem;
+}/*# sourceMappingURL=style.css.map */
