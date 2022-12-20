@@ -1,0 +1,7 @@
+@use '../../abstracts' as a;
+.inputs__buttons {
+    @include a.flexCenter();
+    :hover .checkbox{
+        background: red;
+    }
+}

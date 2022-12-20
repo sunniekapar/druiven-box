@@ -1,0 +1,60 @@
+@font-face {
+  font-family: "SourceSans";
+  src: url("../fonts/sourcesans.ttf") format("truetype");
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  color: #F5F5F5;
+  font-family: "SourceSans";
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark light;
+}
+
+body {
+  min-height: 100vh;
+  background: #141414;
+}
+
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+.inputs__buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inputs__buttons :hover .checkbox {
+  background: red;
+}
+
+.wrapper {
+  height: 100vh;
+  width: 100%;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5vh;
+}
+
+.inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}/*# sourceMappingURL=questionsStyles.css.map */

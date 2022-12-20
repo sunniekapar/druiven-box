@@ -2,33 +2,39 @@
   font-family: "SourceSans";
   src: url("../fonts/sourcesans.ttf") format("truetype");
 }
-* {
-  font-family: "SourceSans";
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 * {
   margin: 0;
   padding: 0;
   color: #F5F5F5;
+  font-family: "SourceSans";
 }
 
 html {
   scroll-behavior: smooth;
-  box-sizing: border-box;
+  color-scheme: dark light;
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   background: #141414;
 }
 
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
 .container {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 5rem;
-  height: 100%;
 }
 .container h1 {
   font-size: 5rem;
@@ -40,13 +46,16 @@ body {
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 5vw;
   width: 80vw;
 }
 
 .difficulties__cards {
   width: 300px;
   height: 300px;
+}
+.difficulties__cards a {
+  text-decoration: none;
 }
 .difficulties__cards button {
   height: 100%;
@@ -56,6 +65,7 @@ body {
   cursor: pointer;
   background: #0059B8;
   box-shadow: 0 0 50px 0 #0059B8;
+  border: 0;
 }
 
 .cards__button {
@@ -65,14 +75,15 @@ body {
   flex-direction: column;
   gap: 2vh;
   padding: 48px;
-  border: solid 4px rgba(0, 89, 184, 0.5);
+  border: 0;
+  box-shadow: 0 0 50px 0 rgba(245, 245, 245, 0.25);
   background: #242424;
   border-radius: 36px;
-  transition: 0.25s;
+  transition: 0.5s;
 }
 .cards__button h2 {
   font-size: 3.5rem;
 }
 .cards__button p {
   font-size: 1.25rem;
-}/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=indexStyle.css.map */
