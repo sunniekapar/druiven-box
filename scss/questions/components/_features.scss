@@ -1,0 +1,32 @@
+@use "../../abstracts" as a;
+
+.features {
+  width: 75vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.hint__link {
+  transition: 0.2s;
+  font-weight: bold;
+  color: a.$accent-color;
+  border-bottom: solid 2px transparent;
+  &:hover {
+    cursor: pointer;
+    border-color: a.$accent-color;
+  }
+}
+
+.submit-button {
+  all: unset;
+  cursor: pointer;
+  transition: 0.3s;
+  background: rgba(a.$accent-color, 0.75);
+  font-size: calc(a.$body-font-size - 0.25rem);
+  border-radius: 6px;
+  padding: 12px 16px;
+  &:hover {
+    background: a.$accent-color;
+  }
+}

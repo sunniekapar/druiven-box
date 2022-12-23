@@ -1,7 +1,61 @@
-@use '../../abstracts' as a;
+@use "../../abstracts" as a;
 .inputs__buttons {
-    @include a.flexCenter();
-    :hover .checkbox{
-        background: red;
-    }
+  @include a.flexCenter();
+  flex-direction: row;
+  label {
+    margin: 2vw;
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  height: 60px;
+  width: 34px;
+}
+
+input {
+  display: none;
+}
+
+.slider {
+  border-radius: 4px;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: a.$contrast-color;
+  transition: 0.4s;
+  &:before {
+    border-radius: 4px;
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 24px;
+    left: 5px;
+    bottom: 5px;
+    background-color: white;
+    transition: 0.4s;
+  }
+}
+
+.switch input {
+  &:checked + .slider {
+    background-color: a.$accent-color;
+    box-shadow: 0 0 10px a.$accent-color;
+  }
+  &:checked + .slider:before {
+    transform: translateY(-24px);
+  }
+}
+
+.inputs__output {
+  width: calc(50px + 2vw);
+  height: calc(50px + 2vw);
+  background: a.$accent-color;
+  border-radius: 4px;
+  font-size: 2.5rem;
+  @include a.flexCenter();
 }

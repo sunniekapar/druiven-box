@@ -1,0 +1,41 @@
+@use "../../abstracts" as a;
+
+.choices {
+  @include a.flexCenter();
+  width: 75vw;
+}
+
+.form-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1vw;
+}
+
+.choices__options {
+  @include a.flexCenter();
+  width: 100%;
+  height: 20vh;
+  input[type="radio"]:checked + .form-label {
+    background-color: a.$accent-color;
+  }
+  label {
+    @include a.flexCenter();
+  }
+}
+
+.form-label {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  transition: 0.25s;
+  background-color: a.$contrast-color;
+  border-radius: 8px;
+  text-align: center;
+  padding: 50px;
+  font-size: a.$body-font-size;
+  &:active {
+    background-color: a.$accent-color;
+  }
+}
