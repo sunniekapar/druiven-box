@@ -1,10 +1,8 @@
 @font-face {
   font-family: "SourceSans";
-  src: url("../../fonts/sourcesans.ttf") format("truetype");
+  src: url("../fonts/sourcesans.ttf") format("truetype");
 }
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -12,7 +10,7 @@
   margin: 0;
   padding: 0;
   color: #F5F5F5;
-  font-family: "SourceSans", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "SourceSans";
 }
 
 html {
@@ -25,10 +23,7 @@ body {
   background: #141414;
 }
 
-img,
-picture,
-svg,
-video {
+img, picture, svg, video {
   display: block;
   max-width: 100%;
 }

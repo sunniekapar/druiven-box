@@ -5,6 +5,18 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  input {
+    all: unset;
+    cursor: pointer;
+    transition: 0.3s;
+    background: rgba(a.$accent-color, 0.75);
+    font-size: calc(a.$body-font-size - 0.25rem);
+    border-radius: 6px;
+    padding: 12px 16px;
+    &:hover {
+      background: a.$accent-color;
+    }
+  }
 }
 
 .main-menu-button {
@@ -32,14 +44,4 @@
 }
 
 .submit-button {
-  all: unset;
-  cursor: pointer;
-  transition: 0.3s;
-  background: rgba(a.$accent-color, 0.75);
-  font-size: calc(a.$body-font-size - 0.25rem);
-  border-radius: 6px;
-  padding: 12px 16px;
-  &:hover {
-    background: a.$accent-color;
-  }
 }

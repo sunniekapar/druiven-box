@@ -5,7 +5,13 @@
   width: 75vw;
 }
 
-.form-container {
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+}
+
+.form__choices {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);

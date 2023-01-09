@@ -1,10 +1,8 @@
 @font-face {
   font-family: "SourceSans";
-  src: url("../../fonts/sourcesans.ttf") format("truetype");
+  src: url("../fonts/sourcesans.ttf") format("truetype");
 }
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -12,7 +10,7 @@
   margin: 0;
   padding: 0;
   color: #F5F5F5;
-  font-family: "SourceSans", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "SourceSans";
 }
 
 html {
@@ -25,10 +23,7 @@ body {
   background: #141414;
 }
 
-img,
-picture,
-svg,
-video {
+img, picture, svg, video {
   display: block;
   max-width: 100%;
 }
@@ -103,13 +98,7 @@ input {
   width: 75vw;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 4vh;
-}
-
-.form__choices {
+.form-container {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -179,18 +168,6 @@ input {
   justify-content: space-between;
   align-items: flex-end;
 }
-.features input {
-  all: unset;
-  cursor: pointer;
-  transition: 0.3s;
-  background: rgba(0, 89, 184, 0.75);
-  font-size: 1rem;
-  border-radius: 6px;
-  padding: 12px 16px;
-}
-.features input:hover {
-  background: #0059B8;
-}
 
 .main-menu-button {
   position: fixed;
@@ -214,4 +191,17 @@ input {
 .hint__link:hover {
   cursor: pointer;
   border-color: #0059B8;
+}
+
+.submit-button {
+  all: unset;
+  cursor: pointer;
+  transition: 0.3s;
+  background: rgba(0, 89, 184, 0.75);
+  font-size: 1rem;
+  border-radius: 6px;
+  padding: 12px 16px;
+}
+.submit-button:hover {
+  background: #0059B8;
 }/*# sourceMappingURL=questionsStyles.css.map */
