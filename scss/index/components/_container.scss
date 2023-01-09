@@ -1,57 +1,61 @@
 //  styles the container section
-@use '../../abstracts' as a;
+@use "../../abstracts" as a;
 
 .container {
-    height: 100vh; // this is not taking up the whole height of hte body when using 100%?, fix it so it can work on phone
-    @include a.flexCenter();
-    flex-direction: column;
-    gap: 5rem;
-    h1 {
-        font-size: a.$title-font-size;
-    }
+  height: 100vh; // this is not taking up the whole height of hte body when using 100%?, fix it so it can work on phone
+  @include a.flexCenter();
+  flex-direction: column;
+  gap: 5rem;
+  h1 {
+    font-size: a.$title-font-size;
+  }
 }
 
-.difficulties { 
-    @include a.flexCenter();
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 5vw;
-    width: 80vw;
+.difficulties {
+  @include a.flexCenter();
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 5vw;
+  width: 80vw;
+  &:has(.difficulties__cards:hover)
+    .difficulties__cards:not(.difficulties__cards:hover) {
+    opacity: 0.6;
+  }
 }
 
 .difficulties__cards {
-   width: 300px;
-   height: 300px;
-   a {
-    text-decoration: none;  
-   }
-    button {   
-        height: 100%;
-        width: 100%;
-    }
-    button:hover {
-        cursor: pointer;
-        background: a.$accent-color;
-        box-shadow: 0 0 50px 0 a.$accent-color;
-        border: 0;
-    }
+  transition: 0.5s;
+  width: 300px;
+  height: 300px;
+  a {
+    text-decoration: none;
+  }
+  button {
+    height: 100%;
+    width: 100%;
+  }
+  button:hover {
+    cursor: pointer;
+    background: a.$accent-color;
+    box-shadow: 0 0 50px 0 a.$accent-color;
+    border: 0;
+  }
 }
 
 .cards__button {
-    @include a.flexCenter();
-    flex-direction: column;
-    gap: 2vh;
-    padding: 48px;
-    border: 0;
-    box-shadow: 0 0 50px 0 rgba(a.$light-color, 0.25);
-    //border: solid 4px rgba(a.$light-color, 0.5);
-    background: a.$contrast-color;
-    border-radius: 36px;
-    transition: .5s;
-    h2 {
-        font-size: a.$header-font-size;
-    }
-    p {
-        font-size: a.$body-font-size;
-    }
+  @include a.flexCenter();
+  flex-direction: column;
+  gap: 2vh;
+  padding: 48px;
+  border: 0;
+  box-shadow: 0 0 50px 0 rgba(a.$light-color, 0.1);
+  background: a.$contrast-color;
+  border-radius: 36px;
+  transition: 0.5s;
+  h2 {
+    font-size: a.$header-font-size;
+  }
+  p {
+    font-size: a.$body-font-size;
+  }
 }

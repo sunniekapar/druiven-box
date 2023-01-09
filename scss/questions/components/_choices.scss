@@ -19,6 +19,7 @@
   height: 20vh;
   input[type="radio"]:checked + .form-label {
     background-color: a.$accent-color;
+    box-shadow: 0 0 20px 0 rgba(a.$accent-color, 0.75);
   }
   label {
     @include a.flexCenter();
@@ -37,5 +38,6 @@
   font-size: a.$body-font-size;
   &:active {
     background-color: a.$accent-color;
+    box-shadow: 0 0 20px 0 rgba(a.$accent-color, 0.75);
   }
 }

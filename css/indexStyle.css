@@ -49,8 +49,12 @@ img, picture, svg, video {
   gap: 5vw;
   width: 80vw;
 }
+.difficulties:has(.difficulties__cards:hover) .difficulties__cards:not(.difficulties__cards:hover) {
+  opacity: 0.6;
+}
 
 .difficulties__cards {
+  transition: 0.5s;
   width: 300px;
   height: 300px;
 }
@@ -76,7 +80,7 @@ img, picture, svg, video {
   gap: 2vh;
   padding: 48px;
   border: 0;
-  box-shadow: 0 0 50px 0 rgba(245, 245, 245, 0.25);
+  box-shadow: 0 0 50px 0 rgba(245, 245, 245, 0.1);
   background: #242424;
   border-radius: 36px;
   transition: 0.5s;

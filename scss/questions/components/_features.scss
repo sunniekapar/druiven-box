@@ -7,6 +7,19 @@
   align-items: flex-end;
 }
 
+.main-menu-button {
+  position: fixed;
+  top: 4vw;
+  left: 4vw;
+  font-size: calc(a.$header-font-size - 1.5rem);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hint {
+  font-size: calc(a.$body-font-size - 0.1rem);
+}
+
 .hint__link {
   transition: 0.2s;
   font-weight: bold;

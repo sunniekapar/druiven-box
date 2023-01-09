@@ -115,6 +115,7 @@ input {
 }
 .choices__options input[type=radio]:checked + .form-label {
   background-color: #0059B8;
+  box-shadow: 0 0 20px 0 rgba(0, 89, 184, 0.75);
 }
 .choices__options label {
   display: flex;
@@ -135,6 +136,7 @@ input {
 }
 .form-label:active {
   background-color: #0059B8;
+  box-shadow: 0 0 20px 0 rgba(0, 89, 184, 0.75);
 }
 
 .wrapper {
@@ -165,6 +167,19 @@ input {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+}
+
+.main-menu-button {
+  position: fixed;
+  top: 4vw;
+  left: 4vw;
+  font-size: 2rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hint {
+  font-size: 1.15rem;
 }
 
 .hint__link {
