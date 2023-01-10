@@ -22,7 +22,7 @@
 .choices__options {
   @include a.flexCenter();
   width: 100%;
-  height: 20vh;
+  height: 25vh;
   input[type="radio"]:checked + .form-label {
     background-color: a.$accent-color;
     box-shadow: 0 0 20px 0 rgba(a.$accent-color, 0.75);

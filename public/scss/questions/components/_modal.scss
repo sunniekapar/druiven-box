@@ -1,0 +1,33 @@
+@use "../../abstracts" as a;
+$minWidth: 40vw;
+$minHeight: 60vh;
+$maxWidth: 80vw;
+$maxHeight: 60vh;
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  backdrop-filter: blur(4px);
+}
+.modal {
+  @include a.flexCenter();
+  width: $minWidth;
+  height: $minHeight;
+  position: fixed;
+  top: calc(50% - $minHeight / 2);
+  left: calc(50% - $minWidth / 2);
+  background: a.$light-color;
+  border-radius: 8px;
+}
+
+@media (max-width: 1000px) {
+  .modal {
+    width: $maxWidth;
+    height: $maxHeight;
+    top: calc(50% - $maxHeight/ 2);
+    left: calc(50% - $maxWidth/ 2);
+  }
+}

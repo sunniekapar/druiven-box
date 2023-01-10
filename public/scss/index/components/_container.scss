@@ -1,21 +1,22 @@
 //  styles the container section
 @use "../../abstracts" as a;
 
-.container {
-  height: 100vh; // this is not taking up the whole height of hte body when using 100%?, fix it so it can work on phone
+.wrapper {
+  // height: 100vh;
+  padding: 10vh;
   @include a.flexCenter();
   flex-direction: column;
-  gap: 5rem;
+  gap: 10rem;
   h1 {
     font-size: a.$title-font-size;
+    text-align: center;
   }
 }
 
 .difficulties {
   @include a.flexCenter();
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 5vw;
+  gap: 10vh;
   width: 80vw;
   &:has(.difficulties__cards:hover)
     .difficulties__cards:not(.difficulties__cards:hover) {
