@@ -11,7 +11,7 @@
 * {
   margin: 0;
   padding: 0;
-  color: #F5F5F5;
+  color: #f5f5f5;
   font-family: "SourceSans", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
@@ -40,22 +40,22 @@ video {
 @-webkit-keyframes transitionIn {
   from {
     opacity: 0;
-    transform: translateY(15px);
+    transform: rotateY(15deg);
   }
   to {
     opacity: 1;
-    transform: translateY(0px);
+    transform: rotateY(0deg);
   }
 }
 
 @keyframes transitionIn {
   from {
     opacity: 0;
-    transform: translateY(15px);
+    transform: rotateY(15deg);
   }
   to {
     opacity: 1;
-    transform: translateY(0px);
+    transform: rotateY(0deg);
   }
 }
 .wrapper {
@@ -108,8 +108,8 @@ input {
 }
 
 .switch input:checked + .slider {
-  background-color: #0059B8;
-  box-shadow: 0 0 10px #0059B8;
+  background-color: #c52233;
+  box-shadow: 0 0 10px #c52233;
 }
 .switch input:checked + .slider:before {
   transform: translateY(-24px);
@@ -118,7 +118,7 @@ input {
 .inputs__output {
   width: calc(50px + 2vw);
   height: calc(50px + 2vw);
-  background: #0059B8;
+  background: #c52233;
   border-radius: 4px;
   font-size: 2.5rem;
   display: flex;
@@ -155,8 +155,8 @@ input {
   height: 25vh;
 }
 .choices__options input[type=radio]:checked + .form-label {
-  background-color: #0059B8;
-  box-shadow: 0 0 20px 0 rgba(0, 89, 184, 0.75);
+  background-color: #c52233;
+  box-shadow: 0 0 20px 0 rgba(197, 34, 51, 0.75);
 }
 .choices__options label {
   display: flex;
@@ -176,8 +176,8 @@ input {
   font-size: 1.25rem;
 }
 .form-label:active {
-  background-color: #0059B8;
-  box-shadow: 0 0 20px 0 rgba(0, 89, 184, 0.75);
+  background-color: #c52233;
+  box-shadow: 0 0 20px 0 rgba(197, 34, 51, 0.75);
 }
 
 .wrapper {
@@ -213,13 +213,13 @@ input {
   all: unset;
   cursor: pointer;
   transition: 0.3s;
-  background: rgba(0, 89, 184, 0.75);
+  background: rgba(197, 34, 51, 0.75);
   font-size: 1rem;
   border-radius: 6px;
   padding: 12px 16px;
 }
 .features input:hover {
-  background: #0059B8;
+  background: #c52233;
 }
 
 .main-menu-button {
@@ -236,14 +236,15 @@ input {
 }
 
 .hint__link {
+  all: unset;
   transition: 0.2s;
   font-weight: bold;
-  color: #0059B8;
+  color: #c52233;
   border-bottom: solid 2px transparent;
 }
 .hint__link:hover {
   cursor: pointer;
-  border-color: #0059B8;
+  border-color: #c52233;
 }
 
 .modal-wrapper {
@@ -265,7 +266,7 @@ input {
   position: fixed;
   top: calc(50% - 30vh);
   left: calc(50% - 20vw);
-  background: #F5F5F5;
+  background: #f5f5f5;
   border-radius: 8px;
 }
 

@@ -12,6 +12,7 @@ $maxHeight: 60vh;
   width: 100vw;
   backdrop-filter: blur(4px);
 }
+
 .modal {
   @include a.flexCenter();
   width: $minWidth;

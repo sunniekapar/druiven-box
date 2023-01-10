@@ -33,6 +33,7 @@
 }
 
 .hint__link {
+  all: unset;
   transition: 0.2s;
   font-weight: bold;
   color: a.$accent-color;
@@ -41,7 +42,4 @@
     cursor: pointer;
     border-color: a.$accent-color;
   }
-}
-
-.submit-button {
 }

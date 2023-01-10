@@ -40,11 +40,13 @@ video {
 @keyframes transitionIn {
   from {
     opacity: 0;
-    transform: translateY(15px);
+    //transform: translateY(15px);
+    transform: rotateY(15deg);
   }
   to {
     opacity: 1;
-    transform: translateY(0px);
+    //transform: translateY(0px);
+    transform: rotateY(0deg);
   }
 }
 
