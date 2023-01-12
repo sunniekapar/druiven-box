@@ -34,7 +34,8 @@ video {
 }
 
 .hidden {
-  display: none !important;
+  visibility: hidden;
+  opacity: 0;
 }
 
 @-webkit-keyframes transitionIn {
@@ -102,8 +103,8 @@ video {
 }
 .difficulties__cards button:hover {
   cursor: pointer;
-  background: #c52233;
-  box-shadow: 0 0 50px 0 #c52233;
+  background: #0059b8;
+  box-shadow: 0 0 50px 0 #0059b8;
   border: 0;
 }
 

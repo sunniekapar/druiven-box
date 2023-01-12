@@ -34,7 +34,8 @@ video {
 }
 
 .hidden {
-  display: none !important;
+  visibility: hidden;
+  opacity: 0;
 }
 
 @keyframes transitionIn {

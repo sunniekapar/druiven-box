@@ -1,4 +1,5 @@
 @use "../../abstracts" as a;
+
 .inputs__buttons {
   @include a.flexCenter();
   flex-direction: row;
@@ -52,6 +53,7 @@ input {
 }
 
 .inputs__output {
+  transition: 0.4s;
   width: calc(50px + 2vw);
   height: calc(50px + 2vw);
   background: a.$accent-color;

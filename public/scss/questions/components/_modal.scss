@@ -5,6 +5,7 @@ $maxWidth: 80vw;
 $maxHeight: 60vh;
 
 .modal-wrapper {
+  transition: all 0.35s;
   position: fixed;
   top: 0;
   left: 0;
@@ -14,14 +15,21 @@ $maxHeight: 60vh;
 }
 
 .modal {
-  @include a.flexCenter();
+  transition: all 0.35s;
   width: $minWidth;
   height: $minHeight;
   position: fixed;
   top: calc(50% - $minHeight / 2);
   left: calc(50% - $minWidth / 2);
-  background: a.$light-color;
+  background: a.$contrast-color;
+  box-shadow: 0 0 50px 0 rgba(a.$light-color, 0.1);
+  padding: 8vh;
   border-radius: 8px;
+  p {
+    line-height: 4vh;
+    font-size: a.$body-font-size;
+    color: a.$light-color;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -30,5 +38,17 @@ $maxHeight: 60vh;
     height: $maxHeight;
     top: calc(50% - $maxHeight/ 2);
     left: calc(50% - $maxWidth/ 2);
+  }
+}
+
+.modal__close {
+  all: unset;
+  position: absolute;
+  top: 1vh;
+  right: 2.5vh;
+  color: a.$light-color;
+  font-size: a.$header-font-size;
+  &:hover {
+    cursor: pointer;
   }
 }
