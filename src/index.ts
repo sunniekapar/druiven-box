@@ -9,18 +9,28 @@ const inputSwitches = Array.from(document.querySelectorAll<HTMLInputElement>(".c
 const hintButton = document.querySelector(".hint__link") as HTMLButtonElement // hint button
 const modal = document.querySelector(".modal-wrapper") as HTMLDivElement // modal that opens up when you press the hint button
 const modalCloseButton = document.querySelector(".modal__close") as HTMLButtonElement // the close button for the modal
+let randomQuestion = Math.floor(Math.random() * 2) //selecta random question, placeholder right now to test the logic functions 
+
+import { logicFunctions } from './questions.js';
 
 let inputSwitchesValue: number[] = [0,0,0,0] // all zero since all switches are not checked loaded in
 
 changeInputSwitchValue() 
 
+
+
 // checks if the answer is right
-function verifyOutputValue(a:number, b:number, c:number, d:number) {
+function verifyOutputValue() {
+    changeOutputStyle(logicFunctions[randomQuestion](inputSwitchesValue));
+ 
+
+    /*
     if(a == 1 && b == 1 && c== 1 && d == 0) { // expression
        changeOutputStyle(1)
        return
     }
     changeOutputStyle(0)
+    */
 }
 
 // changes the backgruond color of the output
@@ -39,7 +49,7 @@ function changeInputSwitchValue() {
     for(let i = 0; i < inputSwitchesValue.length; i++) {
         inputSwitchesValue[i] = Number(inputSwitches.at(i)?.value)
     }
-    verifyOutputValue(inputSwitchesValue[0], inputSwitchesValue[1], inputSwitchesValue[2], inputSwitchesValue[3])
+    verifyOutputValue()
 }
 
 // changes the value of each switch
