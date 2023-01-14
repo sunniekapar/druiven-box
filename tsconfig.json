@@ -1,8 +1,8 @@
 {
   "include": ["src", "types"],
   "compilerOptions": {
-    "module": "esnext",
-    "target": "esnext",
+    "module": "ES2015",
+    "target": "ES6",
     "moduleResolution": "node",
     "jsx": "preserve",
     "baseUrl": "./",
