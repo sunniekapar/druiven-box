@@ -73,7 +73,7 @@ let randomAnswerSelection = Math.floor(Math.random() * 4)
 submitButton?.addEventListener('click', () => {
     for(let i = 0; i < multipleChoiceOptions.length; i++) {
         if(multipleChoiceOptions.at(i)?.checked && Number(multipleChoiceOptions.at(i)?.value) == randomAnswerSelection) { // if the answer is selected and right
-            console.log("you chose the right answer")
+            location.reload();
             return
         } else if(multipleChoiceOptions.at(i)?.checked) {
             let selectedAnswer = document.getElementById("option" + multipleChoiceOptions.at(i)!.id)
