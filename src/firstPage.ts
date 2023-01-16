@@ -5,3 +5,5 @@ difficultySelections.forEach(choice => {
         window.location.assign("questions.html?difficulty=" + choice!.value)
     })
 })
+
+//test
