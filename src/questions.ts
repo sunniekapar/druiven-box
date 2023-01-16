@@ -17,7 +17,6 @@ function logic1(inputs: number[], difficulty: number) {
 		case 2:
 		  	return((inputs[0] || inputs[1]) && inputs[3]) 
 		case 3:
-		
 	}
 	return false
 }

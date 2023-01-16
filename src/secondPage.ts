@@ -1,5 +1,4 @@
 import { logicFunctions } from './questions.js';
-import { difficultyChoices } from './firstPage.js'
 
 const accentColor:string = "#0059b8"
 const dominantColor:string = "#141414"
@@ -17,80 +16,37 @@ const submitButton = document.querySelector(".submit-button") as HTMLButtonEleme
 const selectionImages = Array.from(document.querySelectorAll<HTMLImageElement>(".selection-images")) // each selection image
 
 const totalNumberOfQuestions:number = 4 // amount of questions per difficulty
-
-let randomAnswerSelection = Math.floor(Math.random() * 4) 
+const urlParams = new URLSearchParams(window.location.search)
+let difficulty = urlParams.get("difficulty"); /////////////////////// if the value gets deleted set it to zero (todo)
+let numberOfInputs:number = 4;
+let randomAnswerSelection:number = Math.floor(Math.random() * 4) 
 let inputSwitchesValue: number[] = [0,0,0,0] // all zero since all switches are not checked loaded in
 
-changeInputSwitchValue() 
-
-// checks if the answer is right
-function verifyOutputValue() {
-    changeOutputStyle(logicFunctions[randomAnswerSelection](inputSwitchesValue, 2))
-}
-
-// changes the backgruond color of the output
-function changeOutputStyle(outputValue:number | boolean) {
-    if(outputValue) { // if the right answer is selected
-        output.style.background = accentColor
-        output.innerHTML = "1"
-        return
-    } 
-    output.style.background = contrastColor
-    output.innerHTML = "0"
-}
-
-// updates the value after a switch is pressed
-function changeInputSwitchValue() {
-    for(let i = 0; i < inputSwitchesValue.length; i++) {
-        inputSwitchesValue[i] = Number(inputSwitches.at(i)?.value)
+window.onload = () => {
+    generateImages()
+    for (let i = 0; i < numberOfInputs; i++) {
+        changeInputSwitchValue(i)      
     }
-    verifyOutputValue()
 }
 
-// changes the value of each switch
 inputSwitches.forEach(inputSwitch => {
     inputSwitch.addEventListener('click', () => { 
         inputSwitch.value = String(Math.abs(Number(inputSwitch.value) - 1)) 
-        changeInputSwitchValue()
+        changeInputSwitchValue(Number(inputSwitch.name))
     })
 })
 
-// opens modal when you click the hint link
 hintButton.addEventListener('click', () => {
-    modalVisibility(true)
+    isModalVisible(true)
 })
 
 modalCloseButton.addEventListener('click', () => {
-    modalVisibility(false)
+    isModalVisible(false)
 })
-
-// changes the visibility of the modal 
-function modalVisibility(state:boolean) {
-    return(state ? modal.classList.remove("hidden") : modal.classList.add("hidden"))
-}
-
-
-////////////////////////////////////////////////////////////////////////////////////
-
-function generateImages() {
-    for(let i = 0; i < 4; i++) {  
-        let n = Math.floor(Math.random() * totalNumberOfQuestions)
-        while(n != randomAnswerSelection) {
-            n = Math.floor(Math.random() * totalNumberOfQuestions)
-        }
-        selectionImages.at(i)!.src = "https://picsum.photos/200" //+ n + difficulty//
-    }
-    selectionImages.at(randomAnswerSelection)!.src = "https://picsum.photos/100" 
-}
-generateImages()
-
-
-
-//////////////////////////////////////////////////////////////////////////////
 
 submitButton?.addEventListener('click', () => {
     for(let i = 0; i < multipleChoiceOptions.length; i++) {
-        if(multipleChoiceOptions.at(i)?.checked && Number(multipleChoiceOptions.at(i)?.value) == randomAnswerSelection) { // if the answer is selected and right
+        if(multipleChoiceOptions.at(i)?.checked && Number(multipleChoiceOptions.at(i)?.value) == randomAnswerSelection) { 
             location.reload();
             return
         } else if(multipleChoiceOptions.at(i)?.checked) {
@@ -102,3 +58,36 @@ submitButton?.addEventListener('click', () => {
     }
 })
 
+function checkIfAnswerIsRight() {
+    changeOutputValue(logicFunctions[2](inputSwitchesValue, 2))
+}
+
+function changeOutputValue(inputsMatchesExpression:number | boolean) {
+    if(inputsMatchesExpression) { 
+        output.style.background = accentColor
+        output.innerHTML = "1"
+        return
+    } 
+    output.style.background = contrastColor
+    output.innerHTML = "0"
+}
+
+function changeInputSwitchValue(inputName:number) {
+    inputSwitchesValue[inputName] = Number(inputSwitches.at(inputName)?.value)
+    checkIfAnswerIsRight()
+}
+
+function isModalVisible(state:boolean) {
+    return(state ? modal.classList.remove("hidden") : modal.classList.add("hidden"))
+}
+
+function generateImages() {
+    for(let i = 0; i < 4; i++) {  
+        let n = Math.floor(Math.random() * totalNumberOfQuestions)
+        while(n != randomAnswerSelection) {
+            n = Math.floor(Math.random() * totalNumberOfQuestions)
+        }
+        selectionImages.at(i)!.src = "https://picsum.photos/200" //+ n + difficulty//
+    }
+    selectionImages.at(randomAnswerSelection)!.src = "https://picsum.photos/100" 
+}
