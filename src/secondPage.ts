@@ -15,9 +15,10 @@ const multipleChoiceOptions = Array.from(document.querySelectorAll<HTMLInputElem
 const submitButton = document.querySelector(".submit-button") as HTMLButtonElement 
 const selectionImages = Array.from(document.querySelectorAll<HTMLImageElement>(".selection-images")) 
 
-const totalNumberOfQuestions:number = 4 
+const totalNumberOfQuestions:number = logicFunctions.length - 1 
 const urlParams = new URLSearchParams(window.location.search)
-let difficulty:number = Number(urlParams.get("difficulty")) /////////////////////// if the value gets deleted set it to zero (todo)
+let difficulty:number = 0;
+difficulty += Number(urlParams.get("difficulty")) /////////////////////// if the value gets deleted set it to zero (todo)
 let numberOfInputs:number = 4
 let selectedChoice:number|null = null;
 let answer:number = Math.floor(Math.random() * 4) 
@@ -53,14 +54,27 @@ multipleChoiceOptions.forEach(selection => {
 })
 
 submitButton?.addEventListener('click', () => {
-    if(selectedChoice == null) return
-    if(selectedChoice == answer) {
-        location.reload();
-        return
-    }
-    let wrongSelection = document.getElementById("option" + multipleChoiceOptions.at(selectedChoice)!.id)
-    wrongSelection?.classList.add("wrong-answer")
-    wrongSelection!.style.background = incorrectColor
+    let submitState:String = submitButton.innerText;
+    switch(submitState) {
+        case "Submit":
+            if(selectedChoice == null) return;
+            if(selectedChoice == answer) {
+                submitButton.innerText = "Next";
+                location.reload();
+                return;
+            }
+            // todo: make the button shake a little bit when its wrong
+            let wrongSelection = document.getElementById("option" + multipleChoiceOptions.at(selectedChoice)!.id)
+            wrongSelection?.classList.add("wrong-answer")
+            wrongSelection!.style.background = incorrectColor
+            return;
+            
+        case "Next":
+            //todo: go to the next question here 
+            submitButton.innerText = "Submit";
+            return;
+    } 
+   
 })
 
 function generateImages() {
@@ -75,7 +89,7 @@ function generateImages() {
 }
 
 function checkIfAnswerIsRight() {
-    changeOutputValue(logicFunctions[1](inputSwitchesValue, difficulty))
+    changeOutputValue(logicFunctions[randomQuestion](inputSwitchesValue, difficulty))
 }
 
 function changeOutputValue(inputsMatchesExpression:number | boolean) {
@@ -107,7 +121,6 @@ function generateTruthTable(question: number, difficulty: number, inputs: number
 
 /*
     Nested for loop for creating the table stuff
-
     <tr></tr>
     for (i <= inputs) {
         <td> A </td>

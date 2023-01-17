@@ -51,7 +51,7 @@ function logic3(inputs: number[], difficulty: number) {
 		case 2:
 		return(!inputs[2] || (!inputs[0] && inputs[1]) || (inputs[0] && !inputs[1])) // !C + (!A*B) + (A*!B)
 		case 3:
-		return((!inputs[1] && inputs[3]) || (inputs[1] && !inputs[3]) || !(inputs[0] ^ inputs[2])) // (!B*D) + !(A^C) + (B*!D)
+		return((!inputs[1] && inputs[3]) || (inputs[1] && !inputs[3]) || (inputs[0] && inputs[1] || (!inputs[0] && !inputs[1]))) // (!B*D) + A*C + !A*!C + (B*!D)
 	}
 	return false
 }
@@ -79,7 +79,7 @@ function logic5(inputs: number[], difficulty: number) {
 		case 2:
 		return(!inputs[1] || (!inputs[0] && !(inputs[2])) || (inputs[0] && inputs[2])) // !B + (!A*!C) + (A*C)
 		case 3:
-		return(!inputs[3] || (!inputs[1] && (inputs[0] ^ inputs[2]))) // !D + !B*(A^C)
+		return(!inputs[3] || (!inputs[1] && (inputs[0] && !inputs[1]) || (!inputs[0] && inputs[1]))) // !D + !B*(A*!B + !A*B)
 	}
 	return false
 }
