@@ -51,7 +51,7 @@ multipleChoiceOptions.forEach(selection => {
         selectedChoice = Number(selection?.value)
     })
 })
-
+a
 submitButton?.addEventListener('click', () => {
     if(selectedChoice == null) return
     if(selectedChoice == answer) {
