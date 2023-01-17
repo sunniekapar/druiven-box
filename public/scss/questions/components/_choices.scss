@@ -21,10 +21,14 @@
     background-color: a.$accent-color;
     box-shadow: 0 0 20px 0 rgba(a.$accent-color, 0.75);
   }
-  &:has(.wrong-answer) {
-    border-radius: 8px;
+  &:has(.wrong-answer, .right-answer) { 
     box-shadow: 0 0 15px 0 rgba(a.$incorrect-color, 0.75);
-    pointer-events: none;
+  } 
+  &:has(.wrong-answer) {
+    box-shadow: 0 0 15px 0 rgba(a.$incorrect-color, 0.75);
+  }
+  &:has(.right-answer) {
+    box-shadow: 0 0 15px 0 rgba(a.$correct-color, 0.75);
   }
   label {
     @include a.flexCenter();

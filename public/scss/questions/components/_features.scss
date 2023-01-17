@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  input {
+  input, .submit-button {
     all: unset;
     cursor: pointer;
     transition: 0.3s;

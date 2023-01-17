@@ -5,6 +5,7 @@ const dominantColor:string = "#141414"
 const contrastColor:string = "#242424"
 const lightColor:string = "#f5f5f5"
 const incorrectColor:string = "#D62828"
+const correctColor:string = "#1CBB3B"
 
 const output = document.querySelector(".inputs__output") as HTMLDivElement 
 const inputSwitches = Array.from(document.querySelectorAll<HTMLInputElement>(".checkbox")) 
@@ -20,7 +21,7 @@ const urlParams = new URLSearchParams(window.location.search)
 let difficulty:number = 0;
 difficulty += Number(urlParams.get("difficulty")) /////////////////////// if the value gets deleted set it to zero (todo)
 let numberOfInputs:number = 4
-let selectedChoice:number|null = null;
+let selectedChoice:number | null = null;
 let answer:number = Math.floor(Math.random() * 4) 
 let randomQuestion:number = Math.floor(Math.random() * logicFunctions.length) 
 let inputSwitchesValue: number[] = [0,0,0,0] 
@@ -52,29 +53,35 @@ multipleChoiceOptions.forEach(selection => {
         selectedChoice = Number(selection?.value)
     })
 })
-a
+
 submitButton?.addEventListener('click', () => {
-    let submitState:String = submitButton.innerText;
-    switch(submitState) {
-        case "Submit":
-            if(selectedChoice == null) return;
-            if(selectedChoice == answer) {
-                submitButton.innerText = "Next";
-                location.reload();
-                return;
-            }
-            // todo: make the button shake a little bit when its wrong
-            let wrongSelection = document.getElementById("option" + multipleChoiceOptions.at(selectedChoice)!.id)
-            wrongSelection?.classList.add("wrong-answer")
-            wrongSelection!.style.background = incorrectColor
-            return;
+    if(selectedChoice == null) return;
+    let selection = document.getElementById("option" + multipleChoiceOptions.at(selectedChoice)!.id); 
+    if (submitButton.innerText == "Next") {
+        location.reload();
             
-        case "Next":
-            //todo: go to the next question here 
+            //todo: go to the next question here instead of reload
             submitButton.innerText = "Submit";
             return;
-    } 
-   
+    }
+    else {
+        if(selectedChoice == answer) {
+            submitButton.innerText = "Next";
+            selection?.classList.add("right-answer")
+            selection!.style.background = correctColor
+            return;
+        }
+        // todo: make the button shake a little bit when its wrong
+        selection?.classList.add("wrong-answer")
+        selection!.style.background = incorrectColor
+        submitButton.innerHTML = "Try Again"
+        
+        
+
+        
+        //todo: go to the next question here 
+        submitButton.innerText = "Submit";
+    }
 })
 
 function generateImages() {
