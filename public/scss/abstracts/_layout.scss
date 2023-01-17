@@ -13,6 +13,8 @@
   color: a.$light-color;
   font-family: "SourceSans", "Trebuchet MS", "Lucida Sans Unicode",
     "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+    user-select: none;
+  
 }
 
 html {
@@ -22,7 +24,7 @@ html {
 
 body {
   min-height: 100vh;
-  background: a.$dominant-color;
+  background: a.$dominant-color; 
 }
 
 img,

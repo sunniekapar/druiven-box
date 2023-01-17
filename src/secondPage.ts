@@ -6,21 +6,23 @@ const contrastColor:string = "#242424"
 const lightColor:string = "#f5f5f5"
 const incorrectColor:string = "#D62828"
 
-const output = document.querySelector(".inputs__output") as HTMLDivElement // output text
-const inputSwitches = Array.from(document.querySelectorAll<HTMLInputElement>(".checkbox")) // inputs
-const hintButton = document.querySelector(".hint__link") as HTMLButtonElement // hint button
-const modal = document.querySelector(".modal-wrapper") as HTMLDivElement // modal that opens up when you press the hint button
-const modalCloseButton = document.querySelector(".modal__close") as HTMLButtonElement // the close button for the modal
-const multipleChoiceOptions = Array.from(document.querySelectorAll<HTMLInputElement>(".multiple-choice")) // each selection button 
-const submitButton = document.querySelector(".submit-button") as HTMLButtonElement // submit button
-const selectionImages = Array.from(document.querySelectorAll<HTMLImageElement>(".selection-images")) // each selection image
+const output = document.querySelector(".inputs__output") as HTMLDivElement 
+const inputSwitches = Array.from(document.querySelectorAll<HTMLInputElement>(".checkbox")) 
+const hintButton = document.querySelector(".hint__link") as HTMLButtonElement 
+const modal = document.querySelector(".modal-wrapper") as HTMLDivElement 
+const modalCloseButton = document.querySelector(".modal__close") as HTMLButtonElement 
+const multipleChoiceOptions = Array.from(document.querySelectorAll<HTMLInputElement>(".multiple-choice"))  
+const submitButton = document.querySelector(".submit-button") as HTMLButtonElement 
+const selectionImages = Array.from(document.querySelectorAll<HTMLImageElement>(".selection-images")) 
 
-const totalNumberOfQuestions:number = 4 // amount of questions per difficulty
+const totalNumberOfQuestions:number = 4 
 const urlParams = new URLSearchParams(window.location.search)
-let difficulty = urlParams.get("difficulty"); /////////////////////// if the value gets deleted set it to zero (todo)
-let numberOfInputs:number = 4;
-let randomAnswerSelection:number = Math.floor(Math.random() * 4) 
-let inputSwitchesValue: number[] = [0,0,0,0] // all zero since all switches are not checked loaded in
+let difficulty:number = Number(urlParams.get("difficulty")) /////////////////////// if the value gets deleted set it to zero (todo)
+let numberOfInputs:number = 4
+let selectedChoice:number|null = null;
+let answer:number = Math.floor(Math.random() * 4) 
+let randomQuestion:number = Math.floor(Math.random() * logicFunctions.length) 
+let inputSwitchesValue: number[] = [0,0,0,0] 
 
 window.onload = () => {
     generateImages()
@@ -44,22 +46,36 @@ modalCloseButton.addEventListener('click', () => {
     isModalVisible(false)
 })
 
-submitButton?.addEventListener('click', () => {
-    for(let i = 0; i < multipleChoiceOptions.length; i++) {
-        if(multipleChoiceOptions.at(i)?.checked && Number(multipleChoiceOptions.at(i)?.value) == randomAnswerSelection) { 
-            location.reload();
-            return
-        } else if(multipleChoiceOptions.at(i)?.checked) {
-            let selectedAnswer = document.getElementById("option" + multipleChoiceOptions.at(i)!.id)
-            selectedAnswer?.classList.add("wrong-answer")
-            selectedAnswer!.style.background = incorrectColor
-            return
-        }
-    }
+multipleChoiceOptions.forEach(selection => {
+    selection.addEventListener('click', () => {
+        selectedChoice = Number(selection?.value)
+    })
 })
 
+submitButton?.addEventListener('click', () => {
+    if(selectedChoice == null) return
+    if(selectedChoice == answer) {
+        location.reload();
+        return
+    }
+    let wrongSelection = document.getElementById("option" + multipleChoiceOptions.at(selectedChoice)!.id)
+    wrongSelection?.classList.add("wrong-answer")
+    wrongSelection!.style.background = incorrectColor
+})
+
+function generateImages() {
+    for(let i = 0; i < 4; i++) {  
+        let n = Math.floor(Math.random() * totalNumberOfQuestions)
+        while(n != answer) {
+            n = Math.floor(Math.random() * totalNumberOfQuestions)
+        }
+        selectionImages.at(i)!.src = "https://picsum.photos/200" //+ n + difficulty//
+    }
+    selectionImages.at(answer)!.src = "https://picsum.photos/100" 
+}
+
 function checkIfAnswerIsRight() {
-    changeOutputValue(logicFunctions[2](inputSwitchesValue, 2))
+    changeOutputValue(logicFunctions[1](inputSwitchesValue, difficulty))
 }
 
 function changeOutputValue(inputsMatchesExpression:number | boolean) {
@@ -81,13 +97,32 @@ function isModalVisible(state:boolean) {
     return(state ? modal.classList.remove("hidden") : modal.classList.add("hidden"))
 }
 
-function generateImages() {
-    for(let i = 0; i < 4; i++) {  
-        let n = Math.floor(Math.random() * totalNumberOfQuestions)
-        while(n != randomAnswerSelection) {
-            n = Math.floor(Math.random() * totalNumberOfQuestions)
-        }
-        selectionImages.at(i)!.src = "https://picsum.photos/200" //+ n + difficulty//
-    }
-    selectionImages.at(randomAnswerSelection)!.src = "https://picsum.photos/100" 
+function generateTruthTable(question: number, difficulty: number, inputs: number) {
+	let truthTable: Boolean[] | Number[] = new Array();
+	for (let i = 0; i<2**inputs; i++) {
+		truthTable[i] = logicFunctions[question]([(i/(2**(inputs-1)))%2,(i/(2**(inputs-2)))%2,(i/(2**(inputs-3)))%2,(i/(2**(inputs-4)))%2], difficulty)
+	}
+    return(truthTable)
 }
+
+/*
+    Nested for loop for creating the table stuff
+
+    <tr></tr>
+    for (i <= inputs) {
+        <td> A </td>
+        ...
+        <td> Output </td>
+    }
+
+    for (i < how many rows (2**inputs)) {
+        for (j <= inputs) {
+            <td> A value </td>
+
+            .. next loop: <td> B value </td>
+
+            ... last loop: <td> output </td>
+        }
+        <tr></tr>
+    }
+*/
