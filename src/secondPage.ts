@@ -57,9 +57,10 @@ multipleChoiceOptions.forEach(selection => {
 submitButton?.addEventListener('click', () => {
     if(selectedChoice == null) return;
     let selection = document.getElementById("option" + multipleChoiceOptions.at(selectedChoice)!.id); 
+    let quiz =  document.querySelector(".form__choices");
+
     if (submitButton.innerText == "Next") {
         location.reload();
-            
             //todo: go to the next question here instead of reload
             submitButton.innerText = "Submit";
             return;
@@ -67,20 +68,15 @@ submitButton?.addEventListener('click', () => {
     else {
         if(selectedChoice == answer) {
             submitButton.innerText = "Next";
+            quiz?.classList.add("next-question");
             selection?.classList.add("right-answer")
-            selection!.style.background = correctColor
             return;
         }
         // todo: make the button shake a little bit when its wrong
         selection?.classList.add("wrong-answer")
-        selection!.style.background = incorrectColor
         submitButton.innerHTML = "Try Again"
-        
-        
-
-        
         //todo: go to the next question here 
-        submitButton.innerText = "Submit";
+        //submitButton.innerText = "Submit";
     }
 })
 
@@ -100,12 +96,12 @@ function checkIfAnswerIsRight() {
 }
 
 function changeOutputValue(inputsMatchesExpression:number | boolean) {
-    if(inputsMatchesExpression) { 
-        output.style.background = accentColor
+    if(inputsMatchesExpression) {
+        output.classList.add("inputsMatchesExpression") 
         output.innerHTML = "1"
         return
     } 
-    output.style.background = contrastColor
+    output.classList.remove("inputsMatchesExpression") 
     output.innerHTML = "0"
 }
 

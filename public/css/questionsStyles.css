@@ -124,12 +124,15 @@ input {
   transition: 0.4s;
   width: calc(50px + 2vw);
   height: calc(50px + 2vw);
-  background: #0059b8;
+  background: #242424;
   border-radius: 4px;
   font-size: 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.inputs__output.inputsMatchesExpression {
+  background: #0059b8;
 }
 
 .choices {
@@ -146,6 +149,9 @@ input {
   grid-template-rows: repeat(2, 1fr);
   gap: 1vw;
 }
+.form__choices.next-question .choices__options {
+  pointer-events: none;
+}
 
 .choices__options {
   display: flex;
@@ -153,19 +159,11 @@ input {
   align-items: center;
   width: 100%;
   height: 30vh;
+  border-radius: 8px;
 }
-.choices__options input[type=radio]:checked + .form-label:not(.wrong-answer) {
+.choices__options input[type=radio]:checked + [class=form-label] {
   background-color: #0059b8;
   box-shadow: 0 0 20px 0 rgba(0, 89, 184, 0.75);
-}
-.choices__options:has(.wrong-answer, .right-answer) {
-  box-shadow: 0 0 15px 0 rgba(214, 40, 40, 0.75);
-}
-.choices__options:has(.wrong-answer) {
-  box-shadow: 0 0 15px 0 rgba(214, 40, 40, 0.75);
-}
-.choices__options:has(.right-answer) {
-  box-shadow: 0 0 15px 0 rgba(10, 174, 89, 0.75);
 }
 .choices__options label {
   display: flex;
@@ -182,11 +180,19 @@ input {
   border-radius: 8px;
   text-align: center;
   padding: 50px;
-  font-size: 1.25rem;
 }
 .form-label:active {
   background-color: #0059b8;
   box-shadow: 0 0 20px 0 rgba(0, 89, 184, 0.75);
+}
+.form-label.wrong-answer {
+  background: #d62828;
+  box-shadow: 0 0 15px 0 rgba(214, 40, 40, 0.75);
+  pointer-events: none;
+}
+.form-label.right-answer {
+  background: #0AAE59;
+  box-shadow: 0 0 15px 0 rgba(10, 174, 89, 0.75);
 }
 
 .wrapper {
