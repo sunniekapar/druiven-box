@@ -33,7 +33,7 @@
   font-size: calc(a.$body-font-size - 0.1rem);
 }
 
-.hint__link {
+.hint__link, .video-link {
   all: unset;
   transition: 0.2s;
   font-weight: bold;
@@ -42,5 +42,22 @@
   &:hover {
     cursor: pointer;
     border-color: a.$accent-color;
+  }
+}
+
+.submit-button.try-again {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  from,to {
+    transform: translate3d(0, 0, 0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-2px, 0, 0);
+    transform: translate3d(-2px, 0, 0);
+  }
+  20%,40%,60%,80% {
+    transform: translate3d(2px, 0, 0);
   }
 }

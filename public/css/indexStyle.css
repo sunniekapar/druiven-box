@@ -108,7 +108,7 @@ video {
 .difficulties__cards button:hover {
   cursor: pointer;
   background: #0059b8;
-  box-shadow: 0 0 50px 0 #0059b8;
+  box-shadow: 0 0 30px 0 #0059b8;
   border: 0;
 }
 
@@ -120,7 +120,7 @@ video {
   gap: 2vh;
   padding: 48px;
   border: 0;
-  box-shadow: 0 0 50px 0 rgba(245, 245, 245, 0.1);
+  box-shadow: 0 0 30px 0 rgba(245, 245, 245, 0.1);
   background: #242424;
   border-radius: 36px;
   transition: 0.5s;

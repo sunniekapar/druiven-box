@@ -68,6 +68,30 @@ video {
           animation: transitionIn 0.5s;
 }
 
+.wrapper {
+  height: 100vh;
+  width: 100%;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 4vh;
+  gap: 0.5vh;
+}
+
+.inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 75vw;
+}
+
 .inputs__buttons {
   display: flex;
   justify-content: center;
@@ -153,12 +177,23 @@ input {
   pointer-events: none;
 }
 
+@media (max-width: 1200px) {
+  .container {
+    height: auto;
+    gap: 3vh;
+  }
+  .form__choices {
+    gap: 3vh;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: 1fr;
+  }
+}
 .choices__options {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 30vh;
+  min-height: 35vh;
   border-radius: 8px;
 }
 .choices__options input[type=radio]:checked + [class=form-label] {
@@ -195,29 +230,6 @@ input {
   box-shadow: 0 0 15px 0 rgba(10, 174, 89, 0.75);
 }
 
-.wrapper {
-  height: 100vh;
-  width: 100%;
-}
-
-.container {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 2vh;
-}
-
-.inputs {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 75vw;
-}
-
 .features {
   margin-top: 2vh;
   width: 75vw;
@@ -251,18 +263,46 @@ input {
   font-size: 1.15rem;
 }
 
-.hint__link {
+.hint__link, .video-link {
   all: unset;
   transition: 0.2s;
   font-weight: bold;
   color: #0059b8;
   border-bottom: solid 2px transparent;
 }
-.hint__link:hover {
+.hint__link:hover, .video-link:hover {
   cursor: pointer;
   border-color: #0059b8;
 }
 
+.submit-button.try-again {
+  -webkit-animation: shake 0.5s;
+          animation: shake 0.5s;
+}
+
+@-webkit-keyframes shake {
+  from, to {
+    transform: translate3d(0, 0, 0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-2px, 0, 0);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+}
+
+@keyframes shake {
+  from, to {
+    transform: translate3d(0, 0, 0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-2px, 0, 0);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+}
 .modal-wrapper {
   transition: all 0.35s;
   position: fixed;

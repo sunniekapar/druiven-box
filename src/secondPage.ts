@@ -1,3 +1,4 @@
+import confetti from 'canvas-confetti';
 import { logicFunctions } from './questions.js';
 
 const accentColor:string = "#0059b8"
@@ -28,6 +29,7 @@ let inputSwitchesValue: number[] = [0,0,0,0]
 
 window.onload = () => {
     generateImages()
+    removeInputSwitches()
     for (let i = 0; i < numberOfInputs; i++) {
         changeInputSwitchValue(i)      
     }
@@ -51,6 +53,7 @@ modalCloseButton.addEventListener('click', () => {
 multipleChoiceOptions.forEach(selection => {
     selection.addEventListener('click', () => {
         selectedChoice = Number(selection?.value)
+        submitButton.classList.remove("try-again")
     })
 })
 
@@ -58,27 +61,62 @@ submitButton?.addEventListener('click', () => {
     if(selectedChoice == null) return;
     let selection = document.getElementById("option" + multipleChoiceOptions.at(selectedChoice)!.id); 
     let quiz =  document.querySelector(".form__choices");
-
     if (submitButton.innerText == "Next") {
         location.reload();
-            //todo: go to the next question here instead of reload
-            submitButton.innerText = "Submit";
-            return;
+        //todo: go to the next question here instead of reload (only for test mode)
+        submitButton.innerText = "Submit";
+        return;
     }
     else {
         if(selectedChoice == answer) {
+            playSound();
+            fireConfetti();
             submitButton.innerText = "Next";
             quiz?.classList.add("next-question");
             selection?.classList.add("right-answer")
             return;
         }
-        // todo: make the button shake a little bit when its wrong
         selection?.classList.add("wrong-answer")
+        submitButton.classList.add("try-again")
         submitButton.innerHTML = "Try Again"
         //todo: go to the next question here 
-        //submitButton.innerText = "Submit";
     }
 })
+
+
+function playSound() {
+    const correctSoundEffect = new Audio("correctAnswerSoundEffect.mp3");
+    correctSoundEffect.play()
+}
+
+function fireConfetti() {
+    var defaults = {
+        spread: 360,
+        ticks: 100,
+        gravity: 0,
+        decay: 0.95,
+        startVelocity: 30,
+        shapes: ['star'],
+        colors: ['FFE400', 'FFBD00', 'E89400', 'FFCA6C', 'FDFFB8']
+      };
+        function shoot() {
+        confetti({
+          ...defaults,
+          particleCount: 5,
+          scalar: 1.2,
+          shapes: ['star']
+        });
+        confetti({
+          ...defaults,
+          particleCount: 5,
+          scalar: 0.9,
+          shapes: ['circle']
+        });
+      }
+      setTimeout(shoot, 0);
+      setTimeout(shoot, 50);
+      setTimeout(shoot, 100);
+}
 
 function generateImages() {
     for(let i = 0; i < 4; i++) {  
@@ -89,6 +127,16 @@ function generateImages() {
         selectionImages.at(i)!.src = "https://picsum.photos/200" //+ n + difficulty//
     }
     selectionImages.at(answer)!.src = "https://picsum.photos/100" 
+}
+
+function removeInputSwitches() {
+    const switches = document.querySelectorAll(".switch")
+    if(difficulty == 0) {
+        switches[3].remove();
+        switches[2].remove();
+    } else if(difficulty == 1 || difficulty == 2) {
+        switches[3].remove();
+    }
 }
 
 function checkIfAnswerIsRight() {

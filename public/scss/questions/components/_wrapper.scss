@@ -5,10 +5,11 @@
 }
 
 .container {
-  height: 100%;
+  height: 100vh;
   @include a.flexCenter();
   flex-direction: column;
-  gap: 2vh;
+  padding: 4vh;
+  gap: 0.5vh;
 }
 
 .inputs {
