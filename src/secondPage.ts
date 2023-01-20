@@ -22,10 +22,11 @@ const urlParams = new URLSearchParams(window.location.search)
 
 let difficulty:number = 0;
 difficulty += Number(urlParams.get("difficulty")) /////////////////////// if the value gets deleted set it to zero (todo)
+
 let numberOfInputs:number = 4
 let selectedChoice:number | null = null;
 let answer:number = Math.floor(Math.random() * 4) 
-let randomQuestion:number = Math.floor(Math.random() * logicFunctions.length) 
+let randomQuestion:number = Math.floor(Math.random() * totalNumberOfQuestions) 
 let inputSwitchesValue: number[] = [0,0,0,0] 
 
 window.onload = () => {
@@ -86,7 +87,7 @@ submitButton?.addEventListener('click', () => {
 
 
 function playSound() {
-    let sound = new Audio("sounds/correctSoundEffect2.mp3");
+    let sound = new Audio("sounds/correctSoundEffect.mp3");
     sound.play();
 }
 
@@ -120,14 +121,26 @@ function fireConfetti() {
 }
 
 function generateImages() {
-    for(let i = 0; i < 4; i++) {  
-        let n = Math.floor(Math.random() * totalNumberOfQuestions)
-        while(n != answer) {
-            n = Math.floor(Math.random() * totalNumberOfQuestions)
+    selectionImages.at(answer)!.src = `images/d${difficulty}q${randomQuestion}.png` 
+    
+    for (let i:number[] = []; i.length < 4;) {
+        let x = Math.floor(Math.random() * totalNumberOfQuestions)
+        if (!i.includes(x)) {
+
+            let test = selectionImages.at(i.length-1)!.src = `images/d${difficulty}q${x}.png`
+
+            if (test === answer) selectionImages.at(answer)!.src = `images/d${difficulty}q${randomQuestion}.png` ;
         }
-        selectionImages.at(i)!.src = "https://picsum.photos/200" //+ n + difficulty//
     }
-    selectionImages.at(answer)!.src = "https://picsum.photos/100" 
+    
+    // for(let i = 0; i < 4; i++) {  
+    //     let n = Math.floor(Math.random() * totalNumberOfQuestions)
+    //     while(n != randomQuestion) {
+    //         n = Math.floor(Math.random() * totalNumberOfQuestions)
+    //     }
+    //     selectionImages.at(i)!.src =  `images/d${difficulty}q${n}.png`
+    // }
+    // selectionImages.at(answer)!.src = `images/d${difficulty}q${randomQuestion}.png` 
 }
 
 function removeInputSwitches() {

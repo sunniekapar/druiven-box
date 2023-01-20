@@ -1,6 +1,7 @@
 /** @type {import("snowpack").SnowpackUserConfig } */
 export default {
   mount: {
+    'public/scss': '/scss',
     public: { url: '/', static: true },
     src: { url: '/dist' },
   },
@@ -19,7 +20,7 @@ export default {
   ],
   optimize: {
     /* Example: Bundle your final build: */
-    //"bundle": true,
+    "bundle": true,
   },
   packageOptions: {
     /* ... */
