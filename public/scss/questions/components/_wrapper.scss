@@ -6,7 +6,8 @@
 
 .container {
   height: 100vh;
-  @include a.flexCenter();
+  display: flex;
+  align-items: center;
   flex-direction: column;
   padding: 4vh;
   gap: 0.5vh;
