@@ -19,6 +19,7 @@ const selectionImages = Array.from(document.querySelectorAll<HTMLImageElement>("
 
 const totalNumberOfQuestions:number = logicFunctions.length - 1 
 const urlParams = new URLSearchParams(window.location.search)
+
 let difficulty:number = 0;
 difficulty += Number(urlParams.get("difficulty")) /////////////////////// if the value gets deleted set it to zero (todo)
 let numberOfInputs:number = 4
@@ -85,8 +86,8 @@ submitButton?.addEventListener('click', () => {
 
 
 function playSound() {
-    var audio = new Audio('https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3');
-    audio.play();
+    let sound = new Audio("sounds/correctSoundEffect2.mp3");
+    sound.play();
 }
 
 function fireConfetti() {
