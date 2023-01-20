@@ -121,17 +121,17 @@ function fireConfetti() {
 }
 
 function generateImages() {
-    selectionImages.at(answer)!.src = `images/d${difficulty}q${randomQuestion}.png` 
-    
-    for (let i:number[] = []; i.length < 4;) {
-        let x = Math.floor(Math.random() * totalNumberOfQuestions)
-        if (!i.includes(x)) {
+    selectionImages.at(0)!.src = `images/d${difficulty}q${randomQuestion}.png` 
+    selectionImages.at(3)!.src = `images/d${difficulty}q${randomQuestion}.png` 
+    // for (let i:number[] = []; i.length < 4;) {
+    //     let x = Math.floor(Math.random() * totalNumberOfQuestions)
+    //     if (!i.includes(x)) {
 
-            let test = selectionImages.at(i.length-1)!.src = `images/d${difficulty}q${x}.png`
+    //         let test = selectionImages.at(i.length-1)!.src = `images/d${difficulty}q${x}.png`
 
-            if (test === answer) selectionImages.at(answer)!.src = `images/d${difficulty}q${randomQuestion}.png` ;
-        }
-    }
+    //         if (test === answer) selectionImages.at(answer)!.src = `images/d${difficulty}q${randomQuestion}.png` ;
+    //     }
+    // }
     
     // for(let i = 0; i < 4; i++) {  
     //     let n = Math.floor(Math.random() * totalNumberOfQuestions)
