@@ -122,9 +122,9 @@ function fireConfetti() {
 
 function generateImages() {
     selectionImages.at(answer)!.src = `images/d${difficulty}q${randomQuestion}.png` 
-    for (let i:number[] = []; i.length < 4;) {
+    // for (let i:number[] = []; i.length < 4;) {
             
-    }    
+    // }    
     // for (let i:number[] = []; i.length < 4;) {
     //     let x = Math.floor(Math.random() * totalNumberOfQuestions)
     //     if (!i.includes(x)) {

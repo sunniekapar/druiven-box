@@ -8,13 +8,6 @@
   }
 }
 
-.switch {
-  position: relative;
-  display: inline-block;
-  height: 60px;
-  width: 34px;
-}
-
 input {
   display: none;
 }
@@ -30,6 +23,7 @@ input {
   background-color: a.$contrast-color;
   transition: 0.4s;
   &:before {
+    @include a.flexCenter();
     border-radius: 4px;
     position: absolute;
     content: "";
@@ -37,7 +31,9 @@ input {
     width: 24px;
     left: 5px;
     bottom: 5px;
-    background-color: white;
+    background-color: a.$light-color;
+    color: a.$dominant-color;
+    font-weight: bold;
     transition: 0.4s;
   }
 }
@@ -48,7 +44,29 @@ input {
     box-shadow: 0 0 10px a.$accent-color;
   }
   &:checked + .slider:before {
+    color: a.$accent-color;
+  }
+  &:checked + .slider:before {
     transform: translateY(-24px);
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  height: 60px;
+  width: 34px;
+  &:nth-child(1) .slider:before {
+    content: "A"
+  }
+  &:nth-child(2) .slider:before {
+    content: "B"
+  }
+  &:nth-child(3) .slider:before {
+    content: "C"
+  }
+  &:nth-child(4) .slider:before {
+    content: "D"
   }
 }
 

@@ -79,7 +79,6 @@ video {
   align-items: center;
   flex-direction: column;
   padding: 4vh;
-  gap: 0.5vh;
 }
 
 .inputs {
@@ -101,13 +100,6 @@ video {
   margin: 2vw;
 }
 
-.switch {
-  position: relative;
-  display: inline-block;
-  height: 60px;
-  width: 34px;
-}
-
 input {
   display: none;
 }
@@ -124,6 +116,9 @@ input {
   transition: 0.4s;
 }
 .slider:before {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 4px;
   position: absolute;
   content: "";
@@ -131,7 +126,9 @@ input {
   width: 24px;
   left: 5px;
   bottom: 5px;
-  background-color: white;
+  background-color: #f5f5f5;
+  color: #141414;
+  font-weight: bold;
   transition: 0.4s;
 }
 
@@ -140,7 +137,29 @@ input {
   box-shadow: 0 0 10px #0059b8;
 }
 .switch input:checked + .slider:before {
+  color: #0059b8;
+}
+.switch input:checked + .slider:before {
   transform: translateY(-24px);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  height: 60px;
+  width: 34px;
+}
+.switch:nth-child(1) .slider:before {
+  content: "A";
+}
+.switch:nth-child(2) .slider:before {
+  content: "B";
+}
+.switch:nth-child(3) .slider:before {
+  content: "C";
+}
+.switch:nth-child(4) .slider:before {
+  content: "D";
 }
 
 .inputs__output {
@@ -185,6 +204,14 @@ input {
     gap: 3vh;
     grid-template-rows: repeat(4, 1fr);
     grid-template-columns: 1fr;
+  }
+  .form-label {
+    padding: 8px;
+  }
+  .form-label img {
+    max-width: 100%;
+    min-width: 70%;
+    height: auto;
   }
 }
 .choices__options {
