@@ -120,39 +120,21 @@ function fireConfetti() {
       setTimeout(shoot, 100);
 }
 
+//Populates the question response selections
 function generateImages() {
     selectionImages.at(answer)!.src = `images/d${difficulty}q${randomQuestion}.png` 
-    // for (let i:number[] = []; i.length < 4;) {
-            
-    // }    
-    // for (let i:number[] = []; i.length < 4;) {
-    //     let x = Math.floor(Math.random() * totalNumberOfQuestions)
-    //     if (!i.includes(x)) {
-
-    //         let test = selectionImages.at(i.length-1)!.src = `images/d${difficulty}q${x}.png`
-
-    //         if (test === answer) selectionImages.at(answer)!.src = `images/d${difficulty}q${randomQuestion}.png` ;
-    //     }
-    // }
-    
-    // for(let i = 0; i < 4; i++) {  
-    //     let n = Math.floor(Math.random() * totalNumberOfQuestions)
-    //     while(n != randomQuestion) {
-    //         n = Math.floor(Math.random() * totalNumberOfQuestions)
-    //     }
-    //     selectionImages.at(i)!.src =  `images/d${difficulty}q${n}.png`
-    // }
-    // selectionImages.at(answer)!.src = `images/d${difficulty}q${randomQuestion}.png` 
+    let rand4Digits:number[] = ([0,1,2,3,4,5].filter((val)=>{if (val === randomQuestion) return false; return true})).sort(() => 0.5 - Math.random()).slice(0,4)
+    for (let i:number = 0; i<4; i++) {
+        if (!selectionImages.at(i)!.src === true) {
+            selectionImages.at(i)!.src = `images/d${difficulty}q${rand4Digits[i]}.png` 
+        }
+    }    
 }
 
 function removeInputSwitches() {
     const switches = document.querySelectorAll(".switch")
-    if(difficulty == 0) {
-        switches[3].remove();
-        switches[2].remove();
-    } else if(difficulty == 1 || difficulty == 2) {
-        switches[3].remove();
-    }
+    if (difficulty != 3) switches[3].remove();
+    if (difficulty == 0) switches[2].remove();
 }
 
 function checkIfAnswerIsRight() {
