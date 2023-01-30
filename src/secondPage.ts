@@ -1,13 +1,6 @@
 import confetti from 'canvas-confetti';
 import { logicFunctions } from './questions.js';
 
-const accentColor:string = "#0059b8"
-const dominantColor:string = "#141414"
-const contrastColor:string = "#242424"
-const lightColor:string = "#f5f5f5"
-const incorrectColor:string = "#D62828"
-const correctColor:string = "#1CBB3B"
-
 const output = document.querySelector(".inputs__output") as HTMLDivElement 
 const inputSwitches = Array.from(document.querySelectorAll<HTMLInputElement>(".checkbox")) 
 const hintButton = document.querySelector(".hint__link") as HTMLButtonElement 
@@ -21,7 +14,7 @@ const totalNumberOfQuestions:number = logicFunctions.length - 1
 const urlParams = new URLSearchParams(window.location.search)
 let sound = new Audio("sounds/correctSoundEffect.mp3");
 let difficulty:number = 0;
-difficulty += Number(urlParams.get("difficulty")) /////////////////////// if the value gets deleted set it to zero (todo)
+difficulty += (Number(urlParams.get("difficulty")) % 4) /////////////////////// if the value gets deleted set it to zero (todo), or if the value is out of 
 
 let numberOfInputs:number = 4
 let selectedChoice:number | null = null;
