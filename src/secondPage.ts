@@ -19,7 +19,7 @@ const selectionImages = Array.from(document.querySelectorAll<HTMLImageElement>("
 
 const totalNumberOfQuestions:number = logicFunctions.length - 1 
 const urlParams = new URLSearchParams(window.location.search)
-
+let sound = new Audio("sounds/correctSoundEffect.mp3");
 let difficulty:number = 0;
 difficulty += Number(urlParams.get("difficulty")) /////////////////////// if the value gets deleted set it to zero (todo)
 
@@ -71,7 +71,7 @@ submitButton?.addEventListener('click', () => {
     }
     else {
         if(selectedChoice == answer) {
-            playSound();
+            sound.play();
             fireConfetti();
             submitButton.innerText = "Next";
             quiz?.classList.add("next-question");
@@ -84,12 +84,6 @@ submitButton?.addEventListener('click', () => {
         //todo: go to the next question here 
     }
 })
-
-
-function playSound() {
-    let sound = new Audio("sounds/correctSoundEffect.mp3");
-    sound.play();
-}
 
 function fireConfetti() {
     var defaults = {

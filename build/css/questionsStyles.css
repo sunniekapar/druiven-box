@@ -1,34 +1,38 @@
+/* build/css/questionsStyles.css */
 @font-face {
   font-family: "SourceSans";
-  src: url("../../fonts/sourcesans.ttf") format("truetype");
+  src: url(../../fonts/sourcesans.ttf) format("truetype");
 }
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-
 * {
   margin: 0;
   padding: 0;
   color: #f5f5f5;
-  font-family: "SourceSans", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family:
+    "SourceSans",
+    "Trebuchet MS",
+    "Lucida Sans Unicode",
+    "Lucida Grande",
+    "Lucida Sans",
+    Arial,
+    sans-serif;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-
 html {
   scroll-behavior: smooth;
   color-scheme: dark light;
 }
-
 body {
   min-height: 100vh;
   background: #141414;
 }
-
 img,
 picture,
 svg,
@@ -36,12 +40,10 @@ video {
   display: block;
   max-width: 100%;
 }
-
 .hidden {
   visibility: hidden;
   opacity: 0;
 }
-
 @-webkit-keyframes transitionIn {
   from {
     opacity: 0;
@@ -52,7 +54,6 @@ video {
     transform: rotateY(0deg);
   }
 }
-
 @keyframes transitionIn {
   from {
     opacity: 0;
@@ -65,14 +66,12 @@ video {
 }
 .wrapper {
   -webkit-animation: transitionIn 0.5s;
-          animation: transitionIn 0.5s;
+  animation: transitionIn 0.5s;
 }
-
 .wrapper {
   height: 100vh;
   width: 100%;
 }
-
 .container {
   height: 100vh;
   display: flex;
@@ -80,7 +79,6 @@ video {
   flex-direction: column;
   padding: 4vh;
 }
-
 .inputs {
   display: flex;
   justify-content: center;
@@ -89,7 +87,6 @@ video {
   justify-content: space-around;
   width: 75vw;
 }
-
 .inputs__buttons {
   display: flex;
   justify-content: center;
@@ -99,11 +96,9 @@ video {
 .inputs__buttons label {
   margin: 2vw;
 }
-
 input {
   display: none;
 }
-
 .slider {
   border-radius: 4px;
   position: absolute;
@@ -131,7 +126,6 @@ input {
   font-weight: bold;
   transition: 0.4s;
 }
-
 .switch input:checked + .slider {
   background-color: #0059b8;
   box-shadow: 0 0 10px #0059b8;
@@ -142,7 +136,6 @@ input {
 .switch input:checked + .slider:before {
   transform: translateY(-24px);
 }
-
 .switch {
   position: relative;
   display: inline-block;
@@ -161,7 +154,6 @@ input {
 .switch:nth-child(4) .slider:before {
   content: "D";
 }
-
 .inputs__output {
   transition: 0.4s;
   width: calc(50px + 2vw);
@@ -176,14 +168,12 @@ input {
 .inputs__output.inputsMatchesExpression {
   background: #0059b8;
 }
-
 .choices {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 75vw;
 }
-
 .form__choices {
   width: 100%;
   display: grid;
@@ -194,7 +184,6 @@ input {
 .form__choices.next-question .choices__options {
   pointer-events: none;
 }
-
 @media (max-width: 1200px) {
   .container {
     height: auto;
@@ -231,7 +220,6 @@ input {
   justify-content: center;
   align-items: center;
 }
-
 .form-label {
   cursor: pointer;
   width: 100%;
@@ -260,7 +248,6 @@ input {
   min-height: 70%;
   width: auto;
 }
-
 .features {
   margin-top: 2vh;
   width: 75vw;
@@ -268,7 +255,8 @@ input {
   justify-content: space-between;
   align-items: flex-end;
 }
-.features input, .features .submit-button {
+.features input,
+.features .submit-button {
   all: unset;
   cursor: pointer;
   transition: 0.3s;
@@ -277,10 +265,10 @@ input {
   border-radius: 6px;
   padding: 12px 16px;
 }
-.features input:hover, .features .submit-button:hover {
+.features input:hover,
+.features .submit-button:hover {
   background: #0059b8;
 }
-
 .main-menu-button {
   position: fixed;
   top: 4vw;
@@ -289,28 +277,26 @@ input {
   text-decoration: none;
   font-weight: bold;
 }
-
 .hint {
   font-size: 1.15rem;
 }
-
-.hint__link, .video-link {
+.hint__link,
+.video-link {
   all: unset;
   transition: 0.2s;
   font-weight: bold;
   color: #0059b8;
   border-bottom: solid 2px transparent;
 }
-.hint__link:hover, .video-link:hover {
+.hint__link:hover,
+.video-link:hover {
   cursor: pointer;
   border-color: #0059b8;
 }
-
 .submit-button.try-again {
   -webkit-animation: shake 0.5s;
-          animation: shake 0.5s;
+  animation: shake 0.5s;
 }
-
 @-webkit-keyframes shake {
   from, to {
     transform: translate3d(0, 0, 0);
@@ -322,7 +308,6 @@ input {
     transform: translate3d(2px, 0, 0);
   }
 }
-
 @keyframes shake {
   from, to {
     transform: translate3d(0, 0, 0);
@@ -342,9 +327,8 @@ input {
   height: 100vh;
   width: 100vw;
   -webkit-backdrop-filter: blur(4px);
-          backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
-
 .modal {
   transition: all 0.35s;
   width: 40vw;
@@ -362,7 +346,6 @@ input {
   font-size: 1.25rem;
   color: #f5f5f5;
 }
-
 @media (max-width: 1000px) {
   .modal {
     width: 80vw;
@@ -381,4 +364,4 @@ input {
 }
 .modal__close:hover {
   cursor: pointer;
-}/*# sourceMappingURL=questionsStyles.css.map */
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../build/dist/firstPage.js"],
+  "sourcesContent": ["const difficultySelections = Array.from(document.querySelectorAll(\".cards__button\"));\ndifficultySelections.forEach((choice) => {\n  choice.addEventListener(\"click\", () => {\n    window.location.assign(\"questions.html?difficulty=\" + choice.value);\n  });\n});\n"],
+  "mappings": ";AAAA,IAAM,uBAAuB,MAAM,KAAK,SAAS,iBAAiB;AAClE,qBAAqB,QAAQ,CAAC,WAAW;AACvC,SAAO,iBAAiB,SAAS,MAAM;AACrC,WAAO,SAAS,OAAO,+BAA+B,OAAO;AAAA;AAAA;",
+  "names": []
+}

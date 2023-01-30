@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/questionsStyles.css">
+    <link rel="shortcut icon" type="image/png" href="favicon/favicon-16x16.png">
+    <script src="dist/secondPage.js" type="module" defer=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <title>Practice questions</title>
+</head>
+
+<body>
+    <section class="wrapper">
+        <div class="container">
+            <div class="inputs">
+                <div class="inputs__buttons">
+                    <label class="switch">
+                        <input type="checkbox" class="checkbox" value="0" name="0">
+                        <span class="slider" id="A"></span>
+                    </label>
+                    <label class="switch">
+                        <input type="checkbox" class="checkbox" value="0" name="1">
+                        <span class="slider" id="B"></span>
+                    </label>
+                    <label class="switch">
+                        <input type="checkbox" class="checkbox" value="0" name="2">
+                        <span class="slider" id="C"></span>
+                    </label>
+                    <label class="switch">
+                        <input type="checkbox" class="checkbox" value="0" name="3">
+                        <span class="slider" id="D"></span>
+                    </label>
+                </div>
+
+                <div class="inputs__output">
+                    1
+                </div>
+            </div>
+
+            <div class="choices">
+                <form class="form__choices" id="form">
+                    <div class="choices__options">
+                        <input type="radio" id="0" name="option" value="0" class="multiple-choice">
+                        <label id="option0" for="0" class="form-label"> <img class="selection-images">
+                        </label>
+                    </div>
+
+                    <div class="choices__options">
+                        <input type="radio" id="1" name="option" value="1" class="multiple-choice">
+                        <label id="option1" for="1" class="form-label"> <img class="selection-images">
+                        </label>
+                    </div>
+
+                    <div class="choices__options">
+                        <input type="radio" id="2" name="option" value="2" class="multiple-choice">
+                        <label id="option2" for="2" class="form-label"> <img class="selection-images">
+                        </label>
+                    </div>
+
+                    <div class="choices__options">
+                        <input type="radio" id="3" name="option" value="3" class="multiple-choice">
+                        <label id="option3" for="3" class="form-label"> <img class="selection-images">
+                        </label>
+                    </div>
+                </form>
+            </div>
+
+            <div class="features">
+                <div class="hint"> Stuck? &nbsp; <button type="button" class="hint__link">Use a hint.</button>
+                </div>
+                 <button class="submit-button"> Submit</button>
+                <a class="main-menu-button" href="index.html"> 🡰 </a>
+            </div>
+        </div>
+    </section>
+    <div class="modal-wrapper hidden">
+        <div class="modal">
+            <button class="modal__close">×</button>
+            <p> Still stuck? &nbsp; <a class="video-link"> Watch a video.</a></p>
+        </div>
+    </div>
+
+
+</body></html>
